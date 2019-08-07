@@ -25,10 +25,8 @@ function ensureDependencyInstalled(Q, projectRoot, mod) {
 
 module.exports = function(context) {
   if (context.opts.cordova.platforms.includes("ios")) {
-    context.requireCordovaModule("shelljs/global");
-
     const projectRoot = context.opts.projectRoot;
-    const Q = context.requireCordovaModule("q");
+    const Q = require("q");
     return Q.all([
       ensureDependencyInstalled(Q, projectRoot, "ios-sim"),
       ensureDependencyInstalled(Q, projectRoot, "ios-deploy")
