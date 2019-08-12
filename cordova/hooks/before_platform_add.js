@@ -13,6 +13,7 @@ function ensureDependencyInstalled(Q, projectRoot, mod) {
   } catch (e) {
     console.log(`Installing ${mod}`);
     const deferred = Q.defer();
+    const { exec } = require('shelljs');
 
     exec(`npm install ${mod}`, function(exitCode, stdout, stderr) {
       if (exitCode == 0) deferred.resolve();
